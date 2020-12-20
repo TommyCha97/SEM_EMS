@@ -1,3 +1,14 @@
+<?php
+session_start();
+if($_SESSION["id"] == ""){
+echo '<script type="text/javascript">'; 
+echo 'alert("Please Login First");'; 
+echo 'window.location.href = "index.php";';
+echo '</script>';
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,6 +34,20 @@
 
     <!-- Custom styles for this template-->
     <link href="../../libs/css/sb-admin.css" rel="stylesheet">
+
+    <style>
+      .btn-primary {
+    color: white;
+    background-color: #56CCF2;
+    border: none;
+    border-radius: .20px;
+    font-weight: bold;
+    }
+
+    .btn-primary:hover {
+    background-color: #2D9CDB;
+    }
+    </style>
 
   </head>
 
@@ -199,7 +224,7 @@ $id1=$_GET['id'];
             <li class="breadcrumb-item">
               <a href="customerMenu.php?id=C_1">Home</a>
             </li>
-            <li class="breadcrumb-item active">Customer Dasboard</li>
+            <li class="breadcrumb-item active">Customer & Event Organizer Dashboard</li>
           </ol>
 
           <!-- Page Content -->
@@ -227,42 +252,66 @@ $id1=$_GET['id'];
   <div class="w3-row-padding">
     <div class="w3-half">
           <img src="../../libs/AGM_Connexion.jpg" style="width:100%" onclick="onClick(this)" alt="2019 AGM Package" align="center">
-          <form action="cBookingForm.php?id=C_1">
-            <table align="center">
+          <form action="../../BusinessServiceLayer/UserC/sEventPackageController.php?pack=A" method="post">
+            <table align="margin-left" cellpadding="10px">
             <tr style="margin-left: 0px">
               <td><h3 class="package-A">Package A</h3></td>
+            </tr>
+            <tr>
+              <td>
+                <p style="background-color: lightblue;">
+                  RM99 per person<br>Three Compartment<br>Packed Lunch</p>
+              </td>
+                <td>
+                <input class="btn btn-primary" type="submit" value="Choose package" name="Package_A">
+              </td>
+            </tr>
+          </table>
+          </form>
+
+
+          <form action="../../BusinessServiceLayer/UserC/sEventPackageController.php?pack=B" method="post">
+            <table align="margin-left" cellpadding="10px">
+            <tr style="margin-left:0px :10px">
               <td><h3 class="package-B">Package B</h3></td>
+            </tr>
+            <tr>
+              
+              <td>
+                <p style="background-color: lightblue;">
+                  RM110 per person<br>Three Compartment<br>Packed Lunch</p>
+              </td>
+
+               <td>
+                <input class="btn btn-primary" type="submit" value="Choose package" name="Package_B">
+              </td>
+              
+            </tr>
+          
+          </table>
+          </form>
+
+
+
+          <form action="../../BusinessServiceLayer/UserC/sEventPackageController.php?pack=C" method="post">
+            <table align="margin-left" cellpadding="10px">
+            <tr>
               <td><h3 class="package-C">Package C</h3></td>
             </tr>
             <tr>
               <td>
                 <p style="background-color: lightblue;">
-                  RM99 per person<br>Three Compartment Packed<br>Lunch</p>
-              </td>
-              <td>
-                <p style="background-color: lightblue;">
-                  RM110 per person<br>Three Compartment Packed<br>Lunch</p>
-              </td>
-              <td>
-                <p style="background-color: lightblue;">
                   RM140 per person<br>Buffet Dine-in Lunch</p>
               </td>
-            </tr>
-            <tr>
               <td>
-                <input type="submit" value="Choose package" name="Package_A">
+                <input class="btn btn-primary" type="submit" value="Choose package" name="Package_C">
               </td>
-              <td>
-                <input type="submit" value="Choose package" name="Package_B">
-              </td>
-              <td>
-                <input type="submit" value="Choose package" name="Package_C">
-              </td>
-            </tr>
+            </tr>          
           </table>
           </form>
-  
 
+
+  
 
 <br>
 

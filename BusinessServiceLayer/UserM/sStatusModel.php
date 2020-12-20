@@ -40,7 +40,7 @@ $id1=$_GET['id1'];
 $sql = "UPDATE Supplier SET S_SSMNO='$S_SSMNO',S_CompanyName='$S_CompanyName',S_emailAddress='$S_emailAddress',S_password='$S_password',S_phoneNo='$S_phoneNo' WHERE S_supplierID='$id1'";
 if ($conn->query($sql) == TRUE) {
 
-	 header("Location: ../../ApplicationLayer/UserView/supplierMenu.php?id=$id1&event=suc");
+   header("Location: ../../ApplicationLayer/UserView/supplierMenu.php?id=$id1&event=suc");
     } else {
     echo "Error updating record: " . $conn->error;
     

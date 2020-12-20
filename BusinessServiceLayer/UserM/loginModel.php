@@ -1,4 +1,5 @@
 <?php
+session_start();
 include '../../libs/connection.php';
 
 if ($conn->connect_error) {
@@ -17,7 +18,7 @@ $usertype=$_GET['lguser'];
 
 
 if($usertype=='supplier'){
-	
+    
 $sql = "SELECT S_supplierID FROM Supplier WHERE S_emailAddress ='$email' AND  MD5(S_password )= MD5('$psw') AND S_status='approved'";
 
  $result = $conn->query($sql);
@@ -25,13 +26,15 @@ $sql = "SELECT S_supplierID FROM Supplier WHERE S_emailAddress ='$email' AND  MD
 if ($result->num_rows ==1) {
     while($row = $result->fetch_assoc()) {
 
-$id1 = $row["S_supplierID"];
+
+$_SESSION["id"] = $row['S_supplierID'];
 
 }
 
-    header("Location: ../../ApplicationLayer/UserView/supplierMenu.php?id=$id1");
+    header("Location: ../UserC/loginController.php?id=ssuc");
 } else {
-    header("Location: ../../ApplicationLayer/UserView/index.php?event=lgfail");
+ 
+    header("Location: ../UserC/loginController.php?id=lgfail");
 }
 
    
@@ -45,32 +48,34 @@ else if($usertype=='customer'){
 if ($result->num_rows ==1) {
     while($row = $result->fetch_assoc()) {
 
-$id1 = $row["C_customerID"];
+$_SESSION["id"] = $row["C_customerID"];
 
 }
 
-    header("Location: ../../ApplicationLayer/UserView/customerMenu.php?id=$id1");
+    header("Location: ../UserC/loginController.php?id=csuc");
+
+ 
 } else {
-    header("Location: ../../ApplicationLayer/UserView/index.php?event=lgfail");
+   header("Location: ../UserC/loginController.php?id=lgfail");
 }
    
 }
 
 else if($usertype=='eventOrganizer'){
-	$sql = "SELECT EO_eventOrgID FROM Event_Organizer WHERE EO_emailAddress ='$email' AND  MD5(EO_password )= MD5('$psw')";
+    $sql = "SELECT EO_eventOrgID FROM Event_Organizer WHERE EO_emailAddress ='$email' AND  MD5(EO_password )= MD5('$psw')";
 
  $result = $conn->query($sql);
 
 if ($result->num_rows ==1) {
     while($row = $result->fetch_assoc()) {
 
-$id1 = $row["EO_eventOrgID"];
+$_SESSION["id"] = $row["EO_eventOrgID"];
 
 }
 
-    header("Location: ../../ApplicationLayer/UserView/customerMenu.php?id=$id1");
+   header("Location: ../UserC/loginController.php?id=csuc");
 } else {
-    header("Location: ../../ApplicationLayer/UserView/index.php?event=lgfail");
+    header("Location: ../UserC/loginController.php?id=lgfail");
 } 
 }
 
@@ -82,13 +87,16 @@ else if($usertype=='admin'){
 if ($result->num_rows ==1) {
     while($row = $result->fetch_assoc()) {
 
-$id1 = $row["A_adminID"];
+
+$_SESSION["id"]= $row["A_adminID"];
 
 }
 
-    header("Location: ../../ApplicationLayer/UserView/adminMenu.php?id=$id1");
+ header("Location: ../UserC/loginController.php?id=asuc");
+
+   
 } else {
-    header("Location: ../../ApplicationLayer/UserView/index.php?event=lgfail");
+      header("Location: ../UserC/loginController.php?id=lgfail");
 } 
 }
 

@@ -37,35 +37,26 @@ $sql = "INSERT INTO Supplier (S_supplierID,S_SSMNO,S_CompanyName,S_emailAddress,
 }
 
 else if($usertype=='customer'){
-	$sql1="SELECT count(*) as total from Customer";
-	$result2 = $conn->query($sql1);
-$data=$result2->fetch_assoc();
-$max2=$data['total']+1;
-$max="C_".$max2;
-echo"$max";
-$sql = "INSERT INTO Customer (C_customerID,C_name,C_email,C_telNo,C_password)
-             VALUES ('$max','$C_name1','$C_email1','$C_telno1','$C_password1')";
+	
+$sql = "INSERT INTO Customer (C_name,C_email,C_telNo,C_password)
+             VALUES ('$C_name1','$C_email1','$C_telno1','$C_password1')";
  $result = $conn->query($sql);
       if(mysqli_affected_rows($conn) >0 ) {
  
  header("Location: ../../ApplicationLayer/UserView/index.php?event=rgcssc");
 } else {
-    
-  header("Location: ../../ApplicationLayer/UserView/index.php?event=rgcsfl");
- 
+
+    header("Location: ../../ApplicationLayer/UserView/index.php?event=rgcsfl");
+    echo("Error description: " . $conn -> error);
+
 }
    
 }
 
 else if($usertype=='eventOrganizer'){
-	$sql1="SELECT count(*) as total from Event_Organizer";
-	$result2 = $conn->query($sql1);
-$data=$result2->fetch_assoc();
-$max2=$data['total']+1;
-$max="C_".$max2;
-echo"$max";
-$sql = "INSERT INTO Event_Organizer (EO_eventOrgID,EO_companyName,EO_emailAddress,EO_password,EO_telNo)
-             VALUES ('$max','$EO_companyName','$EO_emailAddress','$EO_password','$EO_telNo')";
+	
+$sql = "INSERT INTO Event_Organizer (EO_companyName,EO_emailAddress,EO_password,EO_telNo)
+             VALUES ('$EO_companyName','$EO_emailAddress','$EO_password','$EO_telNo')";
  $result = $conn->query($sql);
       if(mysqli_affected_rows($conn) >0 ) {
  

@@ -1,3 +1,39 @@
+<?php
+session_start();
+if($_SESSION["id"] == ""){
+echo '<script type="text/javascript">'; 
+echo 'alert("Please Login First");'; 
+echo 'window.location.href = "index.php";';
+echo '</script>';
+}
+
+?>
+
+<?php
+include '../../BusinessServiceLayer/UserC/cPaymentController.php'; 
+
+$p = new paymentdetail();
+$resultset = $p -> viewdetail();
+ 
+ $C_customerID = array();
+ $EP_packageName = array();
+ $EP_packagePrice = array();
+ $EO_equipmentName = array();
+ $EOd_totalPrice = array();
+
+ foreach ($resultset as $row)
+ {
+  $C_customerID[] = $row['C_customerID'];
+  $EP_packageName[] = $row['EP_packageName'];
+  $EP_packagePrice[] = $row['EP_packagePrice'];
+  $EO_equipmentName[] = $row['EO_equipmentName'];
+  $EOd_totalPrice[] = $row['EOd_totalPrice'];
+
+}
+  $length = count($C_customerID);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,9 +60,9 @@
     <!-- Custom styles for this template-->
     <link href="../../libs/css/sb-admin.css" rel="stylesheet">
 
-  <style>
+    <style>
 
-  .checkbox{
+ .checkbox{
     zoom: 3;
     padding: 20px;
   }
@@ -44,13 +80,47 @@
   }
 
 
-.a{
-  padding-right: 30px;
-  padding-left: 30px;
+.font{ 
+
+  font-style: normal;
+  font-weight: bold;
   font-size: 20px;
-}
+  text-align:left;
+  width:230px;
+  height:50px;
 
+  }
 
+.font1{ 
+
+  font-style: normal;
+  font-size: 20px;
+  text-align:left;
+  width:450px;
+  height:30px;
+
+  }
+
+  .font2{ 
+
+  font-style: normal;
+  font-size: 28px;
+  font-weight:bold;
+  text-align:left;
+  width:230px;
+  height:50px;
+  }
+
+  .dot{ 
+
+  font-style: normal;
+  font-size: 28px;
+  font-weight:bold;
+  text-align:left;
+  width:20px;
+  height:50px;
+  }
+  
 
 html, body {
     margin: 0;
@@ -336,8 +406,9 @@ html, body {
     border-radius: 5px;
 }
 
-  </style>
-</head>
+    </style>
+
+  </head>
 
   <body id="page-top">
 
@@ -370,7 +441,6 @@ $id1=$_GET['id'];
 
 
 }
-
 
       ?>
          
@@ -510,15 +580,14 @@ $id1=$_GET['id'];
           <!-- Breadcrumbs-->
           <ol class="breadcrumb">
             <li class="breadcrumb-item">
-              <a href="customerMenu.php?id=C_1">Home</a>
+              <a href="customerMenu.php?id=<?php echo"$_SESSION[id]";?>">Home</a>
             </li>
-            <li class="breadcrumb-item active">Equipment list</li>
+            <li class="breadcrumb-item active">Payment Dashboard</li>
           </ol>
 
           <!-- Page Content -->
-          <h1>Select Your Equipment</h1>
+          <h1>View Payment Detail</h1>
           <hr>
-
 
 <!-- Top menu on small screens -->
 <header class="w3-container w3-top w3-hide-large w3-red w3-xlarge w3-padding">
@@ -530,99 +599,105 @@ $id1=$_GET['id'];
 
 <!-- !PAGE CONTENT! -->
 <div class="w3-main" style="margin-left:340px;margin-right:40px">
+
     <head>
-        <title>Equipment</title>
+        <title>Payment</title>
         <meta name="description" content="This is the description">
         <link rel="stylesheet" href="styles.css" />
         <script src="../../libs/cEquipment.js" async></script>
     </head>
-    <body>
-        
-            <h1 class="band-name band-name-large">Equipment</h1>
-        </header>
 
-        <section class="container content-section">
-            <form action="../../BusinessServiceLayer/UserC/EquipmentController.php?lguser=customer" method="post">
-            <h2 class="section-header">Speaker</h2>
-            <div class="shop-items">
-                <div class="shop-item">
-                    <span class="shop-item-title">Sony Speaker</span>
-                    <img class="shop-item-image" src="../../libs/Sony_Speaker.png">
-                    <div class="shop-item-details">Lan Sdn Bhd. Sony SS-CS8 2-Way
-                        , 3-Driver Centre 
-                        , Channel Speaker 
-                        , [Genuine Product 
-                        From Sony Malaysia] 
-                        CENTRE SPEAKER FINISH
-                        Cloth (Grille) PP 
-                        Sheet (Cabinet) 
-                        <span class="shop-item-price a" ><b>RM19.99</b></span>
-                        <input class="checkbox shop-item-button" type="checkbox" name="Selection[]" value="SonySpeaker">
-                    </div>
-                </div>
-                <div class="shop-item">
-                    <span class="shop-item-title">Logitech Multimedia Speaker </span>
-                    <img class="shop-item-image" src="../../libs/speaker2.png">
-                    <div class="shop-item-details">Shah Sdn Bhd. Logitech Multimedia , Speaker Z213 [Original Logitech Malaysia] FULL SOUND IN A COMPACT DESIGN
-                        <span class="shop-item-price a"><b>RM24.99</b></span>
-                        <input class="checkbox shop-item-button" type="checkbox" name="Selection[]" value="LogitechMultimediaSpeaker">
-                    </div>
-                </div>
-            
-                
-            </div>
-        </section>
+<?php
+            for($l = 0; $l < $length; $l++)
+            {
+?> 
+
+    <div class="form-group">
+    <label for="C_customerID" class="font">Customer ID</label>
+    <label for="Dot" class="dot">:</label>
+    <label class="font1"><?php echo ($C_customerID[$l]); ?></label>
+  </div>
+
+  <div class="form-group">
+    <label for="EP_packageName" class="font">Event Package Name :</label>
+    <label for="Dot" class="dot">:</label>
+    <label class="font1"><?php echo ($EP_packageName[$l]); ?></label>
+  </div>
+
+  <div class="form-group">
+    <label for="EP_packagePrice" class="font">Event Package Price</label>
+    <label for="Dot" class="dot">:</label>
+    <label class="font1">RM <?php echo ($EP_packagePrice[$l]); ?></label>
+  </div>
+
+  <div class="form-group">
+    <label for="EO_equipmentName" class="font">Equipment Order Name</label>
+    <label for="Dot" class="dot">:</label>
+    <label class="font1"><?php echo ($EO_equipmentName[$l]); ?></label>
+  </div>
+
+  <div class="form-group">
+    <label for="EOd_totalPrice" class="font">Equipment Order Price</label>
+    <label for="Dot" class="dot">:</label>
+    <label class="font1">RM <?php echo ($EOd_totalPrice[$l]); ?></label>
+  </div>
+
+  <div>
+    <label></label>
+  </div>
+
+  <?php
+  $x = $EP_packagePrice[$l];
+  $y = $EOd_totalPrice[$l];
+  $z = $x + $y;
+  ?>
+
+  <div class="form-group">
+    <label for="EOd_totalPrice" class="font2">Total Price</label>
+    <label for="Dot" class="dot">:</label>
+    <label class="font1">RM <?php echo ($z); ?></label>
+  </div>
 
 
-        <section class="container content-section">
-            <h2 class="section-header">Canopy</h2>
-            <div class="shop-items">
-                <div class="shop-item">
-                    <span class="shop-item-title">Instant Canopy</span>
-                    <img class="shop-item-image" src="../../libs/canopy1.jpg">
-                    <div class="shop-item-details">Siew Sdn Bhd. CANOPY TENT ACCESSORIES: Set of 4 wall panels that fits 10 x 10-foot straight leg W100, C100, or S100 Quik Shade canopies (not included)
-                        <span class="shop-item-price a"><b>RM72.99</b></span>
-                        <input class="checkbox shop-item-button" type="checkbox" name="Selection[]" value="InstantCanopy">
-                    </div>
-                </div>
-                <div class="shop-item">
-                    <span class="shop-item-title">Caravan Canopy</span>
-                    <img class="shop-item-image" src="../../libs/canopy2.jpg">
-                    <div class="shop-item-details">Ruben Sdn Bhd. The TitanShade® is a light-duty, steel commercial grade instant canopy. The durable device is designed for use at outdoor venues, such as street fair vendors, farmer’s markets, tailgaters and work crews
-                        <span class="shop-item-price a"><b>RM69.99</b></span>
-                        <input class="checkbox shop-item-button" type="checkbox" name="Selection[]" value="CaravanCanopy">
-                    </div>
-                </div>
-            </div>
-            <div > &nbsp</div>
-            <div > &nbsp</div>
-        </section>
+  <div class="form-group" style="height: 40px">
+  <label for="TC" class="font">Terms and conditions</label>
+  </div>
+  <div style="height: 50px">
+  <label for="invoice">Please pay invoice by 
+<?php
+$todayDate = date("Y-m-d");// current date
+//Add one month to today
+$dateOneMonthAdded = strtotime(date("Y-m-d", strtotime($todayDate)) . "+1 month");
+echo date('l dS \o\f F Y', $dateOneMonthAdded);
+ 
+?>
+  </label>
+  </div>
+<br>
+      <table>
+      <tr cellpadding="20">
 
-        <section class="container content-section">
-            <h2 class="section-header">CART</h2>
-            <div class="cart-row">
-                <span class="cart-item cart-header cart-column" name="item">ITEM</span>
-                <span class="cart-price cart-header cart-column">PRICE</span>
-                <span class="cart-quantity cart-header cart-column" name="quantity">QUANTITY</span>
-            </div>
-            <div class="cart-items">
-            </div>
-            <div class="cart-total">
-                <strong class="cart-total-title">Total : </strong>
-                <span class="cart-total-price" name="total_price">RM 0</span> 
+        <form action="http://localhost/SEM_EMS/ApplicationLayer/UserView/cPaymentForm.php" method="post">
 
-            </div>
+        <td><a href="customerMenu.php"><input type="button" class="btn btn-primary" name="cancel" value="Cancel"></a></td>
 
-            <input class="btn btn-primary btn-purchase" type="submit" value="PURCHASE" name="purchase">
-            </form>
+        <td><input type="submit" class="btn btn-primary" name="submit" value="Confirm"></td>
 
-        </section>
-            
-    </body>
-</center>
+        </form> 
+
+      </tr>
+    </table>
+
+
+<?php
+          }
+          ?>
+
+<br>
+<br>
 <br>
 
-           <footer class="sticky-footer">
+  <footer class="sticky-footer">
           <div class="container my-auto">
             <div class="copyright text-center my-auto">
               <span>Copyright © SDW GROUP 4 EVENT MANAGEMENT SYSTEM 2018/2019</span>
