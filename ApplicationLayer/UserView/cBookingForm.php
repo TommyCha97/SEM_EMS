@@ -1,3 +1,14 @@
+<?php
+session_start();
+if($_SESSION["id"] == ""){
+echo '<script type="text/javascript">'; 
+echo 'alert("Please Login First");'; 
+echo 'window.location.href = "index.php";';
+echo '</script>';
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,6 +34,20 @@
 
     <!-- Custom styles for this template-->
     <link href="../../libs/css/sb-admin.css" rel="stylesheet">
+
+    <style>
+      .btn-primary {
+    color: white;
+    background-color: #56CCF2;
+    border: none;
+    border-radius: .20px;
+    font-weight: bold;
+    }
+
+    .btn-primary:hover {
+    background-color: #2D9CDB;
+    }
+    </style>
 
   </head>
 
@@ -199,7 +224,7 @@ $id1=$_GET['id'];
             <li class="breadcrumb-item">
               <a href="customerMenu.php?id=C_1">Home</a>
             </li>
-            <li class="breadcrumb-item active">Customer Dasboard</li>
+            <li class="breadcrumb-item active">Customer & Event Organizer Dashboard</li>
           </ol>
 
           <!-- Page Content -->
@@ -217,7 +242,7 @@ $id1=$_GET['id'];
 
 <div class="container">
   <br><b><h2>Booking Package</h2></b><br>
-  <form class="form-horizontal" action="cViewEventPackage.php">
+  <form class="form-horizontal" action="../../BusinessServiceLayer/UserC/BookingFormController.php?lguser=customer" method="post">
     <div class="form-group">
       <label class="control-label col-sm-2" for="DayStart">Day Start:</label>
       <div class="col-sm-10">
@@ -242,16 +267,10 @@ $id1=$_GET['id'];
         <input type="Time" class="form-control" id="TimeEnd" name="TimeEnd">
       </div>
     </div>
-    <div class="form-group">
-      <label class="control-label col-sm-1" for="Venue">Venue:</label>         
-          <select name="ListVenue" form="ListVenue">
-            <option value="Hotel Sri Malaysia">Hotel Sri Malaysia</option>
-            <option value="Putra Hotel">Putra Hotel</option>
-          </select>
-    </div>
+    
     <div class="form-group">        
       <div class="col-sm-offset-2 col-sm-10">
-        <input type="submit" value="Confirm Booking" class="btn btn-default" onclick="myFunction()" style="border-color: black">
+        <input class="btn btn-primary " type="submit" value="Confirm Booking" class="btn btn-default" onclick="myFunction()" style="border-color: black">
       </div>
     </div>
   </form>

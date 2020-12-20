@@ -371,18 +371,15 @@ span.psw {
                   </div>
                   <div class="mr-5">SUPPLIER</div>
                 </div>
-                <a id="btnTrigger"class="card-footer text-white clearfix small z-1" href="#" data-toggle="modal" data-target="#supplierRegister">
-                  <span class="float-left">Join us now!</span>
-                  <span class="float-right">
-                    <i class="fas fa-angle-right"></i>
-
-                  </span>
-                </a>
+                
               </div>
               <div class="col-xl-3 col-sm-6 mb-3"> </div>
-               <button type="button" class="btn btn-info w-100" onclick="document.getElementById('s02').style.display='block'" >Login for supplier</button>
-
+               <button type="button" class="btn btn-info w-100" onclick="document.getElementById('s02').style.display='block'" >Login as Supplier</button>
+              <div class="col-xl-3 col-sm-6 mb-3"> </div>
+               <button type="button" class="btn btn-info w-100" onclick="document.getElementById('s01').style.display='block'" >Register as Supplier</button>
             </div>
+
+
             <div class="col-xl-3 col-sm-6 mb-3">
               <div class="card text-white bg-warning o-hidden h-100">
                 <div class="card-body">
@@ -391,16 +388,16 @@ span.psw {
                   </div>
                   <div class="mr-5">CUSTOMER</div>
                 </div>
-                <a class="card-footer text-white clearfix small z-1" href="#" data-toggle="modal" data-target="#customerRegister">
-                  <span class="float-left">Join us now!</span>
-                  <span class="float-right">
-                    <i class="fas fa-angle-right"></i>
-                  </span>
-                </a>
+                
               </div>
                <div class="col-xl-3 col-sm-6 mb-3"> </div>
-               <button type="button" class="btn btn-info w-100" onclick="document.getElementById('c02').style.display='block'">Login for customer</button>
+               <button type="button" class="btn btn-info w-100" onclick="document.getElementById('c02').style.display='block'">Login as Customer</button>
+
+               <div class="col-xl-3 col-sm-6 mb-3"> </div>
+               <button type="button" class="btn btn-info w-100" onclick="document.getElementById('c01').style.display='block'">Register as Customer</button>
             </div>
+
+
             <div class="col-xl-3 col-sm-6 mb-3">
               <div class="card text-white bg-success o-hidden h-100">
                 <div class="card-body">
@@ -409,16 +406,16 @@ span.psw {
                   </div>
                   <div class="mr-5">EVENT ORGANIZER</div>
                 </div>
-                <a class="card-footer text-white clearfix small z-1" href="#" data-toggle="modal" data-target="#eventRegister">
-                  <span class="float-left">Join us now!</span>
-                  <span class="float-right">
-                    <i class="fas fa-angle-right"></i>
-                  </span>
-                </a>
+                
               </div>
                <div class="col-xl-3 col-sm-6 mb-3"> </div>
-               <button type="button" class="btn btn-info w-100" onclick="document.getElementById('e02').style.display='block'">Login for event organizer</button>
+               <button type="button" class="btn btn-info w-100" onclick="document.getElementById('e02').style.display='block'">Login as Event Organizer</button>
+
+               <div class="col-xl-3 col-sm-6 mb-3"> </div>
+               <button type="button" class="btn btn-info w-100" onclick="document.getElementById('e01').style.display='block'">Register as Event Organizer</button>
             </div>
+
+
             <div class="col-xl-3 col-sm-6 mb-3">
               <div class="card text-white bg-danger o-hidden h-100">
                 <div class="card-body">
@@ -427,15 +424,10 @@ span.psw {
                   </div>
                   <div class="mr-5">Administrator</div>
                 </div>
-                <a class="card-footer text-white clearfix small z-1" href="#" data-toggle="modal" data-target="#adminalert">
-                  <span class="float-left">View Details</span>
-                  <span class="float-right">
-                    <i class="fas fa-angle-right"></i>
-                  </span>
-                </a>
+                
               </div>
                <div class="col-xl-3 col-sm-6 mb-3"> </div>
-               <button type="button" class="btn btn-info w-100" onclick="document.getElementById('a01').style.display='block'">Login as admin</button>
+               <button type="button" class="btn btn-info w-100" onclick="document.getElementById('a01').style.display='block'">Login as Admin</button>
             </div>
             
           </div>
@@ -536,7 +528,7 @@ span.psw {
 
 
 
-    <!-- Login or registration confirm alert for customer-->
+    <!-- Login or registratin confirm alert for customer-->
 <div class="modal fade" id="customerRegister" tabindex="-2" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">

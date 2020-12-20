@@ -227,40 +227,62 @@ $id1=$_GET['id'];
   <div class="w3-row-padding">
     <div class="w3-half">
           <img src="../../libs/Prom_Connexion.jpg" style="width:100%" onclick="onClick(this)" alt="2019 AGM Package" align="center">
-          <form action="cBookingForm.php?id=C_1">
-            <table align="center">
+          
+
+          <form action="../../BusinessServiceLayer/UserC/sEventPackageController.php?id=D" method="post">
+            <table align="margin-left" cellpadding="10px">
             <tr style="margin-left: 0px">
               <td><h3 class="package-A">Package A</h3></td>
+            </tr>
+            <tr>
+              <td>
+                <p style="background-color: lightblue;">
+                  RM80 per person<br>Three Compartment<br>Packed Lunch</p>
+              </td>
+                <td>
+                <input type="submit" value="Choose package" name="Package_D">
+              </td>
+            </tr>
+          </table>
+          </form>
+
+          <form action="../../BusinessServiceLayer/UserC/sEventPackageController.php?id=E" method="post">
+            <table align="margin-left" cellpadding="10px">
+            <tr style="margin-left: 0px">
               <td><h3 class="package-B">Package B</h3></td>
+            </tr>
+            <tr>
+              
+              <td>
+                <p style="background-color: lightblue;">
+                  RM100 per person<br>Three Compartment<br>Packed Lunch</p>
+              </td>
+              </td>
+
+               <td>
+                <input type="submit" value="Choose package" name="Package_E">
+              </td>
+            </tr>
+          </table>
+          </form>
+
+          <form action="../../BusinessServiceLayer/UserC/sEventPackageController.php?id=F" method="post">
+            <table align="margin-left" cellpadding="10px">
+            <tr>
               <td><h3 class="package-C">Package C</h3></td>
             </tr>
             <tr>
               <td>
                 <p style="background-color: lightblue;">
-                  RM80 per person<br>Three Compartment Packed<br>Lunch</p>
+                 RM125 per person<br>Buffet Dine-in Lunch</p>
               </td>
               <td>
-                <p style="background-color: lightblue;">
-                  RM100 per person<br>Three Compartment Packed<br>Lunch</p>
+                <input type="submit" value="Choose package" name="Package_F">
               </td>
-              <td>
-                <p style="background-color: lightblue;">
-                  RM125 per person<br>Buffet Dine-in Lunch</p>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <input type="submit" value="Choose package" name="Package_A">
-              </td>
-              <td>
-                <input type="submit" value="Choose package" name="Package_B">
-              </td>
-              <td>
-                <input type="submit" value="Choose package" name="Package_C">
-              </td>
-            </tr>
+            </tr>          
           </table>
           </form>
+
     </div>
 <br>
 

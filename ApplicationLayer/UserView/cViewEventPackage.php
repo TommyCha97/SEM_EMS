@@ -24,6 +24,20 @@
     <!-- Custom styles for this template-->
     <link href="../../libs/css/sb-admin.css" rel="stylesheet">
 
+    <style>
+      .btn-primary {
+    color: white;
+    background-color: #56CCF2;
+    border: none;
+    border-radius: .20px;
+    font-weight: bold;
+    }
+
+    .btn-primary:hover {
+    background-color: #2D9CDB;
+    }
+    </style>
+
   </head>
 
   <body id="page-top">
@@ -199,7 +213,7 @@ $id1=$_GET['id'];
             <li class="breadcrumb-item">
               <a href="customerMenu.php?id=C_1">Home</a>
             </li>
-            <li class="breadcrumb-item active">Customer Dasboard</li>
+            <li class="breadcrumb-item active">Customer & Event Organizer Dashboard</li>
           </ol>
 
           <!-- Page Content -->
@@ -231,7 +245,7 @@ $id1=$_GET['id'];
           <img src="../../libs/AGM_Connexion.jpg" style="width:50%" onclick="onClick(this)" alt="2019 AGM Package" align="center">
           <b><p>Chair and run your Annual General Meetingas here at<br> Connexion Conference & Event Centre with great convenience<br> and success! Enjoy hassle-free planning with our all-inclusive<br> packages starting from RM99.00 per person.</p></b>
           <form class="" action="cViewEventDetails.php?id=C_1" method="post">
-            <button class="w3-button w3-black w3-padding-large w3-large w3-margin-top" type="submit" name="button">Learn more</button>
+            <button class="btn btn-primary " type="submit" name="button">Learn more</button>
           </form>
           
           
@@ -239,22 +253,8 @@ $id1=$_GET['id'];
           <p><img src="../../libs/Prom_Connexion.jpg" style="width:50%" onclick="onClick(this)" alt="2019 AGM Package" align="center"></p>
           <b><p>Create wonderful memories with a spectacular evening of fun, <br> friendship and laughter! It’s easier to plan your Prom Night <br> in Kuala Lumpur with our all-inclusive packages from RM120 <br> per person</p></b>
           <form class="" action="cViewPackage.php?id=C_1" method="post">
-            <button class="w3-button w3-black w3-padding-large w3-large w3-margin-top" type="submit" name="button">Learn more</button>
+            <button class="btn btn-primary " type="submit" name="button">Learn more</button>
           </form>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 <br>

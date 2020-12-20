@@ -97,7 +97,7 @@ $id1=$_GET['id'];
                <!--Equipment Page -->
             <a class="dropdown-item" href="#" >Equipment List</a>
             <a class="dropdown-item" href="#" >Add Equipment</a>
-            <a class="dropdown-item" href="#" >Update Equipment</a>
+            <a class="dropdown-item" href="sUpdateEquipment.php?id=S_1" >Update Equipment</a>
             <a class="dropdown-item " href="#" >Delete Equipment</a>
                <div class="dropdown-divider"></div>
                <!--Other Relates Page -->

@@ -1,48 +1,37 @@
 <?php
-//include class model user
-require_once '../../BusinessServiceLayer/UserM/cPaymentRecord.php';
+include '../../BusinessServiceLayer/UserM/cPaymentDetailModel.php';
 
-/**
- * 
- */
-class paymentController
+class paymentdetail
 {
 
-	public function operator()
+	public function viewdetail()
 	{
-		//check if data is submitted
-		//check data from form 
 
-		//create new object user
-		$value= new paymentRecord();
-		
-		//pass form data to model	
-		//set user attributes
-		$value->shows = $_POST['$shows'];
+		$details = new modeldetail();
 
-		$value->save();
-			
-
-	}
-	
-	public function getValue()
-	{
-		// assign the returned values(array of user object) to variable users
-		$shows = paymentRecord::getData(); // we use the static method All() that we
-							  // created in user model to retrieve all 
-							  // data for user
-		return $shows;
-	}
-	
-	public function destroy()
-	{
-		$delete = new paymentRecord();
-		$delete->deleteData();
-
+		$resultset = $details->pp();
+		return $resultset;
 	}
 
-	
+}
+?>
 
-	
+
+<?php
+include '../../BusinessServiceLayer/UserM/cPaymentReceiptModel.php';
+
+
+class paymentreceipt
+{
+
+	public function viewreceipt()
+	{
+
+		$details = new modelreceipt();
+
+		$resultset = $details->pp();
+		return $resultset;
+	}
+
 }
 ?>

@@ -1,4 +1,6 @@
+
 <?php
+session_start();
 function suppliercon($email,$psw){
     
 	include '../UserM/loginModel.php';
@@ -48,5 +50,37 @@ admincon($_POST["email"],$_POST["psw"]);
 
 }
 }
+
+
+if(isset($_GET["id"])){
+$idcontrol=$_GET['id'];
+
+     if($idcontrol=='ssuc'){
+
+	header("Location: ../../ApplicationLayer/UserView/supplierMenu.php?id=$_SESSION[id]");
+
+
+				}
+   else if ($idcontrol=='csuc'){
+    header("Location: ../../ApplicationLayer/UserView/customerMenu.php?id=$_SESSION[id]");
+
+
+                }
+                else if ($idcontrol=='asuc'){
+    header("Location: ../../ApplicationLayer/UserView/adminMenu.php?id=$_SESSION[id]");
+
+
+                }
+
+    else if ($idcontrol=='lgfail'){
+    header("Location: ../../ApplicationLayer/UserView/index.php?event=lgfail");
+    session_destroy();
+
+
+ }
+
+}
+
+
 
 ?>

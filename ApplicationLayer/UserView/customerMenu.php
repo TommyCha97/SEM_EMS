@@ -1,3 +1,14 @@
+<?php
+session_start();
+if($_SESSION["id"] == ""){
+echo '<script type="text/javascript">'; 
+echo 'alert("Please Login First");'; 
+echo 'window.location.href = "index.php";';
+echo '</script>';
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,6 +34,16 @@
 
     <!-- Custom styles for this template-->
     <link href="../../libs/css/sb-admin.css" rel="stylesheet">
+
+    <style>
+
+    .height {
+
+      height: 200px;
+    
+    }
+    
+    </style>
 
   </head>
 
@@ -201,9 +222,9 @@ $id1=$_GET['id'];
           <!-- Breadcrumbs-->
           <ol class="breadcrumb">
             <li class="breadcrumb-item">
-              <a href="customerMenu.php">Home</a>
+              <a href="customerMenu.php?id=<?php echo"$_SESSION[id]";?>">Home</a>
             </li>
-            <li class="breadcrumb-item active">Customer Dasboard</li>
+            <li class="breadcrumb-item active">Customer & Event Organizer Dashboard</li>
           </ol>
 
           <!-- Page Content -->
@@ -219,20 +240,14 @@ $id1=$_GET['id'];
                   </div>
                   <div class="mr-5">Event Package</div>
                 </div>
-                <a id="btnTrigger"class="card-footer text-white clearfix small z-1" href="#" data-toggle="modal" data-target="#packageModal">
-                  <span class="float-left">Click to view package!</span>
-                  <span class="float-right">
-                    <i class="fas fa-angle-right"></i>
 
-                  </span>
-                </a>
               </div>
               <div class="col-xl-3 col-sm-6 mb-3"> </div>
-               <button type="button" class="btn btn-info w-100" onclick="window.location.href='cViewEventPackage.php'" >View Event Package</button>
+               <button type="button" class="btn btn-info w-100" onclick="window.location.href='cViewEventPackage.php?id=<?php echo"$_SESSION[id]";?>'" >View Event Package</button>
 
             </div>
 
-<div class="col-xl-3 col-sm-6 mb-3">
+            <div class="col-xl-3 col-sm-6 mb-3 height">
               <div class="card text-white bg-primary o-hidden h-100">
                 <div class="card-body">
                   <div class="card-body-icon">
@@ -240,20 +255,14 @@ $id1=$_GET['id'];
                   </div>
                   <div class="mr-5">Equipment Rental</div>
                 </div>
-                <a id="btnTrigger"class="card-footer text-white clearfix small z-1" href="#" data-toggle="modal" data-target="#equipmentModal">
-                  <span class="float-left">Click to view equipment!</span>
-                  <span class="float-right">
-                    <i class="fas fa-angle-right"></i>
-
-                  </span>
-                </a>
+                
               </div>
               <div class="col-xl-3 col-sm-6 mb-3"> </div>
-               <button type="button" class="btn btn-info w-100" onclick="window.location.href='cEquipment.php?id=C_1'" >View Equipment</button>
+               <button type="button" class="btn btn-info w-100" onclick="window.location.href='cEquipment.php?id=<?php echo"$_SESSION[id]";?>'" >View Equipment</button>
 
             </div>
 
-<div class="col-xl-3 col-sm-6 mb-3">
+            <div class="col-xl-3 col-sm-6 mb-3">
               <div class="card text-white bg-warning o-hidden h-100">
                 <div class="card-body">
                   <div class="card-body-icon">
@@ -261,59 +270,16 @@ $id1=$_GET['id'];
                   </div>
                   <div class="mr-5">Payment</div>
                 </div>
-                <a id="btnTrigger"class="card-footer text-white clearfix small z-1" href="#" data-toggle="modal" data-target="#paymentModal">
-                  <span class="float-left">Click to view payment!</span>
-                  <span class="float-right">
-                    <i class="fas fa-angle-right"></i>
-
-                  </span>
+                
                 </a>
               </div>
               <div class="col-xl-3 col-sm-6 mb-3"> </div>
-               <button type="button" class="btn btn-info w-100" onclick="window.location.href='#'" >Proceed Payment</button>
-
-            </div>
-
-<div class="col-xl-3 col-sm-6 mb-3">
-              <div class="card text-white bg-success o-hidden h-100">
-                <div class="card-body">
-                  <div class="card-body-icon">
-                    <i class="fas fa-shuttle-van"></i>
-                  </div>
-                  <div class="mr-5">Rating</div>
-                </div>
-                <a id="btnTrigger"class="card-footer text-white clearfix small z-1" href="#" data-toggle="modal" data-target="#ratingModal">
-                  <span class="float-left">Click to rate your order!</span>
-                  <span class="float-right">
-                    <i class="fas fa-angle-right"></i>
-
-                  </span>
-                </a>
-              </div>
-              <div class="col-xl-3 col-sm-6 mb-3"> </div>
-               <button type="button" class="btn btn-info w-100" onclick="window.location.href='cRating.php'" >Proceed Rating</button>
+               <button type="button" class="btn btn-info w-100" onclick="window.location.href='cPaymentDetail.php?id=<?php echo"$_SESSION[id]";?>'" >Proceed Payment</button>
 
             </div>
 
 
           </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
