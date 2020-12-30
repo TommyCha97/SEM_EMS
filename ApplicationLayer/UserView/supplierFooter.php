@@ -93,27 +93,7 @@
       </div>
     </div>
 
-<?php
-if(isset($_GET["event"])){
-  $evt=$_GET['event'];
-
-  if($evt=='suc'){
-$message = "Update Successful";
-echo "<script type='text/javascript'>alert('$message');</script>";
-
- 
-
-                 }
-  else if($evt=='fail'){
-
-
-$message = "Update fail, please try again";
-echo "<script type='text/javascript'>alert('$message');</script>";
-
-
-  }
-}
-?>
+<!--  -->
     <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded" href="#page-top">
       <i class="fas fa-angle-up"></i>

@@ -1,71 +1,24 @@
 <?php
-
-function customercon($newarray,$price){
+function suppliercon($EQ_equipmentID,$EQ_equipmentName,$EQ_category,$EQ_price,$EQ_detail,$S_supplierID){
     
-    include '../UserM/sEquipment.php';
-}
-function eventcon($email,$psw){
-    
-	include '../UserM/sEquipment.php';
+	include '../UserM/Equipment.php';
 }
 
-?>
-
-
+?> 
 
 <?php
-if(isset($_GET["lguser"])){
-$usertype=$_GET['lguser'];
+
+include '../../BusinessServiceLayer/UserM/Equipment.php';
 
 
-if($usertype=='customer'){
 
+if(isset($_GET["id1"])){
 
-$array = $_POST["Selection"];
-$newarray = implode(", ", $array);
+$id1=$_GET['id'];
 
-
-$c = count($array);
-$price = 0.0;
-
-
-for($i=0; $i<$c; $i++)
-{
-	if($array[$i] == "SonySpeaker"){
-
-		$price = $price + 19.99;
-
-	}
-	if($array[$i] == "LogitechMultimediaSpeaker"){
-
-		$price = $price + 24.99;
-
-	}
-	if($array[$i] == "InstantCanopy"){
-
-		$price = $price + 72.99;
-
-	}
-	if($array[$i] == "CaravanCanopy"){
-
-		$price = $price + 69.99;
-
-	}
+suppliercon($_POST["EQ_equipmentID"],$_POST["EQ_equipmentName"],$_POST["EQ_category"],$_POST["EQ_price"],$_POST["EQ_detail"],);
 }
 
 
-customercon($newarray,$price);
+?> 
 
-}
-
-
-if($usertype=='eventOrganizer'){
-
-eventcon($_POST["email"],$_POST["psw"]);
-
-
-}
-
-}
-
-?>
