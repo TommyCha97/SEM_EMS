@@ -1,14 +1,14 @@
 <?php
 function suppliercon($EOd_orderID,$C_customerID,$EQ_equipmentID,$EOd_quantity,$EOd_totalPrice){
     
-	include '../UserM/sEquipmentOrder.php';
+	include '../UserM/sEquipmentOrderModel.php';
 }
 
 ?>
 
 <?php
 
-include '../../BusinessServiceLayer/UserM/sEquipmentOrder.php';
+include '../../BusinessServiceLayer/UserM/sEquipmentOrderModel.php';
 
 
 

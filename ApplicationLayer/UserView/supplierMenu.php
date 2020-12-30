@@ -15,16 +15,18 @@ echo '</script>';
 
   <head>
 
-    <style >
+  <title>Supplier</title>
+
+  <style >
       
       .height{
         height: 200px;
       }
 
-    </style>
-<?php
+  </style>
+  <?php
    include 'supplierHeader.php';
-?>
+  ?>
           <!-- Breadcrumbs-->
           <ol class="breadcrumb">
             <li class="breadcrumb-item">
@@ -38,20 +40,7 @@ echo '</script>';
           <hr>
 
 <div class="row">
-            <div class="col-xl-3 col-sm-6 mb-3">
-              <div class="card text-white bg-secondary o-hidden h-100">
-                <div class="card-body">
-                  <div class="card-body-icon">
-                    <i class="fas fa-shuttle-van"></i>
-                  </div>
-                  <div class="mr-5">Event Package</div>
-                </div>
-
-              </div>
-              <div class="col-xl-3 col-sm-6 mb-3"> </div>
-               <button type="button" class="btn btn-info w-100" onclick="window.location.href='sViewEventPackage.php?id=<?php echo"$_SESSION[id]";?>'" >View Event Package</button>
-
-            </div>
+            
 
 <div class="col-xl-3 col-sm-6 mb-3 height">
               <div class="card text-white bg-primary o-hidden h-100">
@@ -65,6 +54,10 @@ echo '</script>';
               </div>
               <div class="col-xl-3 col-sm-6 mb-3"> </div>
                <button type="button" class="btn btn-info w-100" onclick="window.location.href='sEquipmentOrder.php?id=<?php echo"$_SESSION[id]";?>'" >View Equipment</button>
+               <div class="col-xl-3 col-sm-6 mb-3"> </div>
+               <button type="button" class="btn btn-info w-100" onclick="window.location.href='sAddEquipment.php?id=<?php echo"$_SESSION[id]";?>'" >Add Equipment</button>
+               <div class="col-xl-3 col-sm-6 mb-3"> </div>
+               <button type="button" class="btn btn-info w-100" onclick="window.location.href='sUpdateEquipment.php?id=<?php echo"$_SESSION[id]";?>'" >Update Equipment</button>
 
             </div>
 
@@ -87,18 +80,6 @@ echo '</script>';
 
 
           </div>
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 <?php

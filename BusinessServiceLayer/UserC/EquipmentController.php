@@ -1,17 +1,24 @@
 <?php
+function suppliercon($EQ_equipmentID,$EQ_equipmentName,$EQ_category,$EQ_price,$EQ_detail,$S_supplierID){
+    
+	include '../UserM/Equipment.php';
+}
+
+?> 
+
+<?php
+
 include '../../BusinessServiceLayer/UserM/Equipment.php';
 
-class paymentdetail
-{
 
-	public function viewdetail()
-	{
 
-		$details = new modelupdate();
+if(isset($_GET["id1"])){
 
-		$resultset = $details->pp();
-		return $resultset;
-	}
+$id1=$_GET['id'];
 
+suppliercon($_POST["EQ_equipmentID"],$_POST["EQ_equipmentName"],$_POST["EQ_category"],$_POST["EQ_price"],$_POST["EQ_detail"],);
 }
-?>
+
+
+?> 
+

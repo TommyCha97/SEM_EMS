@@ -43,10 +43,6 @@ tr:hover {
   background: #F5F5F5;
 }
 
-
-
-
-
 .cart-item {
     width: 30%;
 }
@@ -121,20 +117,6 @@ tr:hover {
 
   <section class="container content-section">
             <h2 class="section-header">EQUIPMENT ORDER</h2>
-            <!-- <div class="cart-row">
-                <span class="cart-item cart-header cart-column">Event Organizer ID</span>
-                <span class="cart-item cart-header cart-column">Customer ID</span>
-                <span class="cart-item cart-header cart-column">Equipment ID</span>
-                <span class="cart-item cart-header cart-column">Item</span>
-                <span class="cart-price cart-header cart-column">Price</span>
-                <span class="cart-quantity cart-header cart-column">Quantity</span>
-            </div>
-            <div class="cart-items">
-            </div>
-            <div class="cart-total">
-                <strong class="cart-total-title">Total</strong>
-                <span class="cart-total-price">RM0</span>
-            </div> -->
             
             <?php
    echo"<form  action='../../BusinessServiceLayer/UserC/EquipmentOrderController.php?id1=$id1' method='post'>";

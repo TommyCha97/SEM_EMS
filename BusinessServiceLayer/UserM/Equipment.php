@@ -6,35 +6,37 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 
 
-} 
-// if(isset($_GET["id"])){
-// $id1=$_GET['id'];
-// $sql = " SELECT EQ_equipmentID,EQ_equipmentName,EQ_category,EQ_quantityAvailable,EQ_price,EQ_detail,EQ_status FROM Equipment WHERE S_supplierID='$id1'";
-// $result = $conn->query($sql);
-// if ($result->num_rows > 0) {
-//     // output data of each row
+}
 
+if(isset($_GET["id"])){
+$id1=$_GET['id'];
 
-//    while($row = $result->fetch_assoc()) {
-      
-//     $EQ_equipmentID = $row['EQ_equipmentID'];
-//     $EQ_equipmentName = $row['EQ_equipmentName'];
-//     $EQ_category = $row['EQ_category'];
-//     $EQ_quantityAvailable = $row['EQ_quantityAvailable'];
-//     $EQ_price = $row['EQ_price'];
-//     $EQ_detail = $row['EQ_detail'];
-//   $EQ_status = $row['EQ_status'];;
+// For extra protection these are the columns of which the user can sort by (in your database table).
+$columns = array('EQ_equipmentID','EQ_equipmentName','EQ_category' , 'EQ_price' , 'EQ_detail' , 'S_supplierID');
 
-//     }
+// Only get the column if it exists in the above columns array, if it doesn't exist the database table will be sorted by the first item in the columns array.
+$column = isset($_GET['column']) && in_array($_GET['column'], $columns) ? $_GET['column'] : $columns[0];
 
+// Get the sort order for the column, ascending or descending, default is ascending.
+$sort_order = isset($_GET['order']) && strtolower($_GET['order']) == 'desc' ? 'DESC' : 'ASC';
 
-// }
-// }
+// Get the result...
+if ($result = $conn->query('SELECT * FROM equipment ORDER BY ' .  $column . ' ' . $sort_order)) {
+  // Some variables we need for the table.
+  $up_or_down = str_replace(array('ASC','DESC'), array('up','down'), $sort_order); 
+  $asc_or_desc = $sort_order == 'ASC' ? 'desc' : 'asc';
+  $add_class = ' class="highlight"';
+  
+    
+}
 
-if(isset($_GET["id1"])){
-$id1=$_GET['id1'];
-$sql = "UPDATE Equipment SET EQ_equipmentID='$EQ_equipmentID',EQ_equipmentName='$EQ_equipmentName',EQ_category='$EQ_category',EQ_quantityAvailable='$EQ_quantityAvailable',EQ_price='$EQ_price',EQ_detail='$EQ_detail',EQ_status='$EQ_status' WHERE S_supplierID='$id1'";
-if ($conn->query($sql) == TRUE) {
+}
+
+if (isset($_POST['Update'])) 
+{
+
+    $sql = "UPDATE equipment SET  EQ_equipmentName='$EQ_equipmentName', EQ_category='$EQ_category', EQ_price='$EQ_price', EQ_detail='$EQ_detail' WHERE EQ_equipmentID='$EQ_equipmentID' ";
+    if ($conn->query($sql) == TRUE) {
 
    header("Location: ../../ApplicationLayer/UserView/sUpdateEquipment.php?id=$id1&event=suc");
     } else {
@@ -45,35 +47,9 @@ if ($conn->query($sql) == TRUE) {
 }
 
 
-class modelupdate
-{
 
-    public function pp()
-    {
-        $servername = "localhost";
-        $username = "root";
-        $password = "";
-        $dbname = "ems";
 
-        //Create connection
-        $conn = new mysqli($servername, $username, $password, $dbname);
-        // Check connection
-        if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    } 
 
-           // $sql = " SELECT EQ_equipmentID,EQ_equipmentName,EQ_category,EQ_quantityAvailable,EQ_price,EQ_detail,EQ_status FROM Equipment WHERE S_supplierID='$id1' ";
-        $sql =  "SELECT * FROM Equipment";
-            $resultset = mysqli_query($conn, $sql) or die("database error:". mysqli_error($conn));
-
-            while( $row = mysqli_fetch_assoc($resultset) ) 
-            {
-                
-            }
-    return $resultset;
-    }
-
-}
 
 
 ?>

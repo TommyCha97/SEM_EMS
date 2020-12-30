@@ -9,66 +9,31 @@ echo '</script>';
 
 ?>
 
-<?php
-include '../../BusinessServiceLayer/UserC/EquipmentController.php'; 
-
-$p = new paymentdetail();
-$resultset = $p -> viewdetail();
-
-$S_supplierID = array();
-$EQ_equipmentID = array();
-$EQ_equipmentName = array();
-$EQ_category = array();
-$EQ_quantityAvailable = array();
-$EQ_price = array();
-$EQ_detail = array();
-$EQ_status = array();
-
- foreach ($resultset as $row)
- {  
-    $S_supplierID = $row['S_supplierID'];
-    $EQ_equipmentID = $row['EQ_equipmentID'];
-    $EQ_equipmentName = $row['EQ_equipmentName'];
-    $EQ_category = $row['EQ_category'];
-    $EQ_quantityAvailable = $row['EQ_quantityAvailable'];
-    $EQ_price = $row['EQ_price'];
-    $EQ_detail = $row['EQ_detail'];
-    $EQ_status = $row['EQ_status'];
-  
-}
-  $length = count($EQ_equipmentID);
-
-?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 
   <head>
-<?php
-   include 'supplierHeader.php';
-?>
-</head>
+    <?php
+    include 'supplierHeader.php';
+    ?>
+  </head>
 
 <style>
   
-
-  .input-group {
-  margin: 10px 0px 10px 0px;
+input [type=text]
+{
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: block;
+  box-sizing: border-box;
 }
 .input-group label {
   display: block;
   text-align: left;
   margin: 3px;
 }
-.input-group input {
-  height: 30px;
-  width: 93%;
-  padding: 5px 10px;
-  font-size: 16px;
-  border-radius: 5px;
-  border: 1px solid gray;
-}
+
 .btn {
   padding: 10px;
   font-size: 15px;
@@ -87,25 +52,11 @@ $EQ_status = array();
   width: 50%;
   text-align: center;
 }
-</style>
-    <title>EMS Update Equipment</title>
-
-     
-      
-      <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
-       
-         
-      </form>
-
-<div>
-</div> 
-  <style>
-  
 body {
   font-size: 19px;
 }
 table{
-  width: 50%;
+  width: 15%;
   margin: 30px auto;
   border-collapse: collapse;
   text-align: left;
@@ -123,21 +74,16 @@ tr:hover {
   background: #F5F5F5;
 }
 
+</style>
+    <title>EMS Update Equipment</title>     
+      
+      <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+       
+         
+      </form>
 
-.form1 {
-  width: 45%;
-  margin: 50px auto;
-  text-align: left;
-  padding: 20px;
-  border: 1px solid #bbbbbb;
-  border-radius: 5px;
-}
-
-
-
-  </style>
-  
-
+<div>
+</div> 
 
           <!-- Breadcrumbs-->
           <ol class="breadcrumb">
@@ -150,61 +96,52 @@ tr:hover {
           <!-- Page Content -->
           <h1>Update Equipment</h1>
 
-        <!--  -->
+        <?php
+                 include '../../BusinessServiceLayer/UserC/EquipmentController.php';
+              ?>
           <hr>
 
 <body>
 
 
-  <?php
-  for($l = 0; $l < $length; $l++)
-            {
-   //echo"<form  action='../../BusinessServiceLayer/UserC/EquipmentController.php?id1=$id1' method='post'>";
+    <?php
+      echo"<form  action='../../BusinessServiceLayer/UserC/EquipmentController.php?id1=$id1' method='post'>";
     ?>
 
-  <div class="form-group">
-    <label for="eID">Supplier ID</label>
-    <input type="text" class="form-control" name="sID"value="<?php echo ($S_supplierID[$l]);?>"  readonly>
-  </div>
+  <table>
+        <tr>
+          
+          <th>Equipment ID</th>
+          <th>Equipment Name</th>
+          <th>Equipment Category</th>
+          <th>Equipment Price</th>
+          <th>Equipment Detail</th>
+          <th>Supplier ID</th>
+          <th>Update</th>
+        </tr>
+        <?php while ($row = $result->fetch_assoc()): ?>
+        <tr>
+          
+          <td><input type="hidden" name="EQ_equipmentID"value=<?php echo $row['EQ_equipmentID']; ?> ></td>
+          <td><input type="text" name="EQ_equipmentName"value=<?php echo $row['EQ_equipmentName']; ?> ></td>
+          <td><input type="text" name="EQ_category"value=<?php echo $row['EQ_category']; ?> ></td>
+          <td><input type="text" name="EQ_price"value=<?php echo $row['EQ_price']; ?> ></td>
+          <td><input type="text" name="EQ_detail"value=<?php echo $row['EQ_detail']; ?> ></td>
+          <td><input type="text" name="S_supplierID"value=<?php echo $row['S_supplierID']; ?> ></td>
+          <td><input type="submit" name="Update"></td>
+        </tr>
+        <?php endwhile; ?>
+      </table>
 
-    <div class="form-group">
-    <label for="eID">Equipment ID</label>
-    <input type="text" class="form-control" name="eID"value="<?php echo ($EQ_equipmentID[$l]);?>"  readonly>
-  </div>
+</body>
 
-  <div class="form-group">
-    <label for="eName">Equipment Name</label>
-    <input type="text" class="form-control" name="eName"value="<?php echo ($EQ_equipmentName[$l]);?>" >
-  </div>
-  <div class="form-group">
-    <label for="eCategory">Equipment Category</label>
-    <input type="text" class="form-control" name="eCategory" value="<?php echo ($EQ_category[$l]);?>">
-  </div>
-  <div class="form-group">
-    <label for="eQuantityAvail">Quantity Available</label>
-    <input type="number" class="form-control" name="eQuantityAvail" value="<?php echo ($EQ_quantityAvailable[$l]);?>">
-  </div>
-  <div class="form-group">
-    <label for="ePrice">Price</label>
-    <input type="float" class="form-control" value="<?php echo ($EQ_price[$l]);?>"  name="EQ_price" >
-  </div>
-  <div class="form-group">
-    <label for="eDetail">Equipment Detail</label>
-    <input type="text" class="form-control" name="eDetail" value="<?php echo ($EQ_detail[$l]);?>">
-  </div>
-  <div class="form-group">
-    <label for="eStat">Status of Equipment</label>
-    <input type="text" class="form-control" name="eStat" value="<?php echo ($EQ_status[$l]);?>">
-  </div>
-  
-  <button type="submit" class="btn btn-primary">Update</button>
-</form>
-
-<?php
-          }
-          ?>
  
- <?php
+
+ <footer>
+  <?php
          include 'supplierFooter.php';
          ?>
+           
+         </footer>
+ 
 </html>

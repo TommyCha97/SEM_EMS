@@ -2,7 +2,7 @@
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
 
@@ -101,11 +101,7 @@ $id1=$_GET['id'];
                <div class="dropdown-divider"></div>
                <!--Other Relates Page -->
               <h6 class="dropdown-header">Other Pages:</h6>
-             <a class="dropdown-item " href="sViewBookingData.php?id=<?php echo"$_SESSION[id]";?>" >Booking</a>
-              <?php
-              echo"<a class='dropdown-item' href='sStatus.php?id=$_SESSION[id]'>Status</a>";
-
-              ?>
+             <a class="dropdown-item" href="sStatus.php?id=<?php echo"$_SESSION[id]";?>">Status</a>
               <a class="dropdown-item" href="sViewMessage.php?id=<?php echo"$_SESSION[id]";?>">Message</a>
           </div>
         </li>

@@ -144,10 +144,7 @@ tr:hover {
     <label for="eCategory">Equipment Category</label>
     <input type="text" class="form-control" name="EQ_category" >
   </div>
-  <div class="form-group">
-    <label for="eQuantityAvail">Quantity Available</label>
-    <input type="number" class="form-control" name="EQ_quantityAvailable" >
-  </div>
+  
   <div class="form-group">
     <label for="ePrice">Price</label>
     <input type="float" class="form-control" name="EQ_price" >
@@ -156,10 +153,7 @@ tr:hover {
     <label for="eDetail">Equipment Detail</label>
     <input type="text" class="form-control" name="EQ_detail">
   </div>
-  <div class="form-group">
-    <label for="eStat">Status of Equipment</label>
-    <input type="text" class="form-control" name="EQ_status" >
-  </div>
+  
 <!--   <div class="form-group">
     <label for="eStat">Supplier ID</label>
     <input type="text" class="form-control" name="S_supplierID" >
